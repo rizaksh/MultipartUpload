@@ -1,4 +1,4 @@
-# Uploading large files to private S3 through SPA using presigned url #
+# Uploading large files to private S3 through SPA using presigned url C# #
 
 A reference implementation of multipart file upload to private S3 through SPA using presigned without exposing AWS Credentials in SPA application.
 
