@@ -1,0 +1,17 @@
+<h1>File Upload to S3 using Multipart upload with presigned url </h1>
+
+
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+  <div class="form-group">
+
+    <label for="file">Select files  : </label>
+    <input formControlName="file" multiple
+           id="file"           
+           type="file"
+           class="form-control"
+           (change)="onFileChange($event)">
+           
+   </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
