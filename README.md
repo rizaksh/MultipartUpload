@@ -1,4 +1,4 @@
-# Uploading large files to private S3 through SPA using presigned url C# #
+# Uploading large files to private S3 with angular application using C# & AWS Lambda #
 
 A reference implementation of multipart file upload to private S3 through SPA using presigned without exposing AWS Credentials in SPA application.
 
@@ -39,7 +39,7 @@ For each part upload, a response with Etag is received.
 
 #### S3 Bucket ####
 
-1.	CORS policy of S3 bucket has to be updated to allow atleast the following in Origin, AllowedMethods and ExposeHeaders
+1. CORS policy of S3 bucket has to be updated to allow atleast the following in Origin, AllowedMethods and ExposeHeaders
 
 	eg.
 	[
@@ -59,7 +59,7 @@ For each part upload, a response with Etag is received.
 		}
 	]
 
-2.	Configure the bucket lifecycle policy to abort incomplete multipart uploads.
+2. Configure the bucket lifecycle policy to abort incomplete multipart uploads.
 
 
 #### AWSLamba.MultipartUpload  ####
