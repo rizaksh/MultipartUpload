@@ -1,4 +1,4 @@
-# Uploading large files to private S3 with angular application using C# & AWS Lambda #
+# Uploading large files to private S3 bucket with angular application using C# & AWS Lambda #
 
 A reference implementation of multipart file upload to private S3 through SPA using presigned without exposing AWS Credentials in SPA application.
 
