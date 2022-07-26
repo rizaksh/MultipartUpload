@@ -74,8 +74,8 @@ Prerequisite - .net 6, Node.js and npm
 To run the solution in local you need to run the API project and Angular project, instructions follows
 
 1. Api project 
-		Open CMD, change directory to MultipartUpload\AWSLamba.MultipartUpload\src\AWSLamba.MultipartUpload and run comamnd "dotnet run".
-2. Api
+		Open CMD, change directory to MultipartUpload\AWSLamba.MultipartUpload\src\AWSLamba.MultipartUpload and run command "dotnet run".
+2. Angular project
 		a. Open CMD, change directory to MultipartUpload\Angular.MultipartUpload and run command "npm install".
-		b. Once npm install is complete, run "ng serve"
+		b. Once npm install is complete, run command "ng serve"
 	   
