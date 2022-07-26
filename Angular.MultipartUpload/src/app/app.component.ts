@@ -27,28 +27,11 @@ export class AppComponent {
   onFileChange(event: any) {
 
     if (event.target.files.length > 0) {
-      //const file = event.target.files[0];
-      //this.myForm.patchValue({
-      //  fileSource: file
-      //});
       this.files = event.target.files;
     }
   }
 
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
   async submit() {
-    //const formData = new FormData();
-    //formData.append('file', this.myForm.get('fileSource')?.value);
-
-    //this.httpClient.post('http://localhost:8001/upload.php', formData)
-    //  .subscribe(res => {
-    //    console.log(res);
-    //    alert('Uploaded Successfully.');
-    //  })
     if (!this.files || this.files.length  <1) {
       alert("No files selected. Select again.")
       return;
@@ -93,6 +76,8 @@ export class AppComponent {
   }
 
   async uploadMultipartFile(file: any) {
+    
+    // (1) initiate request for multipart upload
     let initiateMultipartResponse = await this.initiateMultipartUpload(file.name, file.type);
 
     try {
@@ -109,12 +94,14 @@ export class AppComponent {
       for (let index = 1; index < NUM_CHUNKS + 1; index++) {
         start = (index - 1) * FILE_CHUNK_SIZE;
         end = (index) * FILE_CHUNK_SIZE;
+        
+        //(2) split files into smaller parts.        
         blob = (index < NUM_CHUNKS) ? file.slice(start, end) : file.slice(start);
 
-        // (1) Generate presigned URL for each part
+        // (3) Generate presigned URL for each part
         let presignedUrl =  await this.getPreSignedUrl(file.name, initiateMultipartResponse.uploadId, index);
 
-        // (2) Puts each file part into the storage server
+        // (4) Puts each file part into the S3 bucket using presigned Url
 
         orderData.push({
           presignedUrl: presignedUrl.url.toString(),
@@ -140,7 +127,7 @@ export class AppComponent {
                 console.log('Done!');
             }
 
-            // (3) Calls the CompleteMultipartUpload endpoint in the backend server
+            // (5) CompleteMultipartUpload is involved to complete the multipart upload request.
 
             if (event instanceof HttpResponse) {
               const currentPresigned = orderData.find(item => item.presignedUrl === event.url);
